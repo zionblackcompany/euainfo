@@ -1,0 +1,12 @@
+# Upsell routes
+/up /up/up1.html 302
+/up/ /up/up1.html 302
+/up1 /up/up1.html 302
+/up1/ /up/up1.html 302
+/up2 /up/up2.html 302
+/up2/ /up/up2.html 302
+/up3 /up/up3.html 302
+/up3/ /up/up3.html 302
+
+# SPA fallback
+/* /index.html 200

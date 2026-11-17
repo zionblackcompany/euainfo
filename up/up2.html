@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script
+	src="https://cdn.xtracky.com/scripts/utm-handler.js"
+	data-token="fc451683-a191-4879-8ac3-73710e448869"
+>
+</script>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Congratulations! – Customer #1000</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+<script>
+window.UPSELL_LANG = 'en';
+
+var T = {
+    badge: "CUSTOMER #1000!",
+    title: "Congratulations!",
+    subtitle: "You are our <span class='highlight'>1000th customer</span> and you've won the chance to spin the exclusive discount wheel.",
+    spinBtn: "Spin the wheel!",
+    wheelCenter: "SPIN",
+    wheelCenterLoading: "...",
+    resultLabel: "Incredible! You won:",
+    resultText: "Exclusive discount on the platform",
+    timerWarning: "This discount expires in",
+    timerUnit: "minutes",
+    acceptBtn: "REDEEM BONUS",
+    refuseBtn: "NO"
+  };
+
+function applyUTMToCheckout() {
+  var params = new URLSearchParams(window.location.search);
+  if (!params.toString()) return;
+  document.querySelectorAll('a.btn-sim').forEach(function(link) {
+    try {
+      var url = new URL(link.href);
+      params.forEach(function(value, key) { url.searchParams.set(key, value); });
+      link.href = url.toString();
+    } catch(e) {}
+  });
+}
+</script>
+
+  <style>
+    :root { --google-blue:#4285F4; --google-red:#EA4335; --google-yellow:#FBBC05; --google-green:#34A853; --gold:#FFD700; --surface:#FFFFFF; --text-dark:#202124; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Roboto',-apple-system,BlinkMacSystemFont,sans-serif; min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#0f0f1a 0%,#1a1a2e 50%,#16213e 100%); padding:20px; overflow-x:hidden; -webkit-user-select:none; user-select:none; }
+    .confetti-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:100; overflow:hidden; }
+    .confetti { position:absolute; width:10px; height:10px; top:-10px; animation:confetti-fall 4s linear infinite; }
+    @keyframes confetti-fall { 0%{transform:translateY(0) rotate(0deg);opacity:1} 100%{transform:translateY(100vh) rotate(720deg);opacity:0} }
+    .container { position:relative; z-index:1; max-width:420px; width:100%; text-align:center; animation:slideUp 0.6s ease-out; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+    .badge-1000 { display:inline-block; background:linear-gradient(135deg,var(--gold),#ffaa00); color:#1a1a2e; padding:10px 24px; border-radius:50px; font-family:'Poppins',sans-serif; font-weight:800; font-size:0.9rem; margin-bottom:20px; box-shadow:0 4px 20px rgba(255,215,0,.4); animation:pulse-badge 2s ease-in-out infinite; }
+    @keyframes pulse-badge { 0%,100%{transform:scale(1);box-shadow:0 4px 20px rgba(255,215,0,.4)} 50%{transform:scale(1.05);box-shadow:0 6px 30px rgba(255,215,0,.6)} }
+    .card { background:var(--surface); border-radius:24px; padding:32px 24px; box-shadow:0 20px 60px rgba(0,0,0,.4); }
+    .cashbacks-label { font-size:.85rem; color:#5F6368; margin-bottom:12px; }
+    .title { font-family:'Poppins',sans-serif; font-size:1.4rem; font-weight:700; color:var(--text-dark); margin-bottom:8px; line-height:1.3; }
+    .subtitle { font-size:.95rem; color:#5F6368; margin-bottom:24px; line-height:1.5; }
+    .highlight { color:var(--google-green); font-weight:700; }
+    .wheel-container { position:relative; width:280px; height:280px; margin:0 auto 24px; }
+    .wheel-outer { position:absolute; width:100%; height:100%; border-radius:50%; background:linear-gradient(135deg,#ffd700,#ffaa00); padding:8px; box-shadow:0 8px 32px rgba(255,215,0,.3); }
+    .wheel { width:100%; height:100%; border-radius:50%; position:relative; overflow:hidden; transition:transform 5s cubic-bezier(0.17,0.67,0.12,0.99); box-shadow:inset 0 0 20px rgba(0,0,0,.2); }
+    .wheel-segment { position:absolute; width:50%; height:50%; top:0; right:0; transform-origin:bottom left; display:flex; align-items:center; justify-content:center; font-family:'Poppins',sans-serif; font-weight:700; font-size:.9rem; color:white; text-shadow:1px 1px 2px rgba(0,0,0,.3); }
+    .wheel-segment span { transform:rotate(22.5deg) translateX(20px); display:block; }
+    .wheel-segment:nth-child(1){transform:rotate(0deg) skewY(-45deg);background:var(--google-blue)}
+    .wheel-segment:nth-child(2){transform:rotate(45deg) skewY(-45deg);background:var(--google-red)}
+    .wheel-segment:nth-child(3){transform:rotate(90deg) skewY(-45deg);background:var(--google-green)}
+    .wheel-segment:nth-child(4){transform:rotate(135deg) skewY(-45deg);background:#9c27b0}
+    .wheel-segment:nth-child(5){transform:rotate(180deg) skewY(-45deg);background:var(--google-yellow)}
+    .wheel-segment:nth-child(6){transform:rotate(225deg) skewY(-45deg);background:#00bcd4}
+    .wheel-segment:nth-child(7){transform:rotate(270deg) skewY(-45deg);background:#ff5722}
+    .wheel-segment:nth-child(8){transform:rotate(315deg) skewY(-45deg);background:#607d8b}
+    .wheel-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:70px; height:70px; background:linear-gradient(135deg,#fff,#f0f0f0); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Poppins',sans-serif; font-weight:800; font-size:.7rem; color:var(--text-dark); box-shadow:0 4px 15px rgba(0,0,0,.2); z-index:10; cursor:pointer; transition:transform .2s; }
+    .wheel-center:hover { transform:translate(-50%,-50%) scale(1.05); }
+    .wheel-center.disabled { pointer-events:none; opacity:.7; }
+    .wheel-pointer { position:absolute; top:-5px; left:50%; transform:translateX(-50%); width:0; height:0; border-left:15px solid transparent; border-right:15px solid transparent; border-top:30px solid var(--google-red); z-index:20; filter:drop-shadow(0 2px 4px rgba(0,0,0,.3)); }
+    .btn-spin { display:block; width:100%; padding:16px 32px; background:linear-gradient(135deg,var(--gold),#ffaa00); color:#1a1a2e; font-family:'Poppins',sans-serif; font-size:1.1rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; border:none; border-radius:12px; cursor:pointer; transition:all .3s ease; box-shadow:0 6px 20px rgba(255,215,0,.4); }
+    .btn-spin:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(255,215,0,.5); }
+    .btn-spin:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+    .result-section { display:none; animation:fadeIn .5s ease-out; }
+    @keyframes fadeIn { from{opacity:0;transform:scale(.9)} to{opacity:1;transform:scale(1)} }
+    .result-box { background:linear-gradient(135deg,var(--google-green),#2d9649); padding:24px; border-radius:16px; margin-bottom:20px; }
+    .result-label { color:rgba(255,255,255,.9); font-size:.9rem; margin-bottom:8px; }
+    .result-discount { font-family:'Poppins',sans-serif; font-size:3rem; font-weight:800; color:white; text-shadow:0 4px 15px rgba(0,0,0,.2); animation:bounce .6s ease-out; }
+    @keyframes bounce { 0%{transform:scale(0)} 50%{transform:scale(1.2)} 70%{transform:scale(.9)} 100%{transform:scale(1)} }
+    .result-text { color:rgba(255,255,255,.95); font-size:.95rem; margin-top:8px; }
+    .btn-sim { display:block; width:100%; background:#5CCE5E; color:#000000; text-align:center; padding:16px 20px; font-size:18px; font-weight:bold; border-radius:12px; text-decoration:none; box-shadow:0 4px 12px rgba(0,0,0,0.15); transition:transform 0.2s ease,box-shadow 0.2s ease; margin-bottom:12px; }
+    .btn-sim:hover { transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,0.25); background:#4ab84c; color:#000000; }
+    .btn-sim-warning { display: block; font-size: 11px; font-weight: normal; margin-top: 5px; opacity: 0.85; }
+    .btn-nao-text { display:block; width:100%; background:#ffffff; color:#adadad; text-align:center; padding:12px 20px; font-size:15px; font-weight:bold; border-radius:12px; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,0.08); transition:transform 0.2s ease; margin-top:4px; cursor:pointer; }
+    .btn-nao-text:hover { transform:translateY(-1px); }
+    .timer-warning { margin-top:16px; padding:12px; background:#fff3cd; border-radius:8px; font-size:.85rem; color:#856404; }
+    .timer-warning strong { color:var(--google-red); }
+  </style>
+</head>
+<body>
+  <div class="confetti-container" id="confettiContainer"></div>
+
+<div class="container">
+  <div id="badgeEl" class="badge-1000"></div>
+
+  <div class="card">
+    <div class="cashbacks-label">CashBacks</div>
+    <h1 id="titleEl" class="title"></h1>
+    <p id="subtitleEl" class="subtitle"></p>
+
+    <div id="wheelSection">
+      <div class="wheel-container">
+        <div class="wheel-pointer"></div>
+        <div class="wheel-outer">
+          <div class="wheel" id="wheel">
+            <div class="wheel-segment"><span>10%</span></div>
+            <div class="wheel-segment"><span>20%</span></div>
+            <div class="wheel-segment"><span>50%</span></div>
+            <div class="wheel-segment"><span>5%</span></div>
+            <div class="wheel-segment"><span>15%</span></div>
+            <div class="wheel-segment"><span>30%</span></div>
+            <div class="wheel-segment"><span>25%</span></div>
+            <div class="wheel-segment"><span>10%</span></div>
+          </div>
+          <div class="wheel-center" id="wheelCenter" onclick="spinWheel()"></div>
+        </div>
+      </div>
+      <button class="btn-spin" id="spinBtn" onclick="spinWheel()"></button>
+    </div>
+
+    <div class="result-section" id="resultSection">
+      <div class="result-box">
+        <div id="resultLabel" class="result-label"></div>
+        <div class="result-discount">50% OFF</div>
+        <div id="resultText" class="result-text"></div>
+      </div>
+      <!-- Container onde o upsell será exibido -->
+      <div id="vendepay-upsell-container"></div>
+
+      <!-- Script do widget Vendepay Upsell -->
+      <script src="https://widget.vendepay.com/upsell-widget/v1/vendepay-upsell-widget-1.0.16.js?upsellId=cb627362-3f4d-4cdb-b9a7-08524a101564"
+              onload="window.VendepayUpsellWidget && window.VendepayUpsellWidget.showIframe('vendepay-upsell-container')">
+      </script>
+
+      <div class="timer-warning">
+        ⚠️ <span id="timerWarningText"></span> <strong id="timerDisplay">05:00</strong> <span id="timerUnitText"></span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <script>
+    // Apply translations
+    var lang = 'en';
+    var t = T;
+    document.getElementById('badgeEl').textContent = t.badge;
+    document.getElementById('titleEl').textContent = t.title;
+    document.getElementById('subtitleEl').innerHTML = t.subtitle;
+    document.getElementById('wheelCenter').textContent = t.wheelCenter;
+    document.getElementById('spinBtn').textContent = t.spinBtn;
+    document.getElementById('resultLabel').textContent = t.resultLabel;
+    document.getElementById('resultText').textContent = t.resultText;
+    // acceptLinkText removed (Vendepay widget)
+
+    document.getElementById('timerWarningText').textContent = t.timerWarning;
+    document.getElementById('timerUnitText').textContent = t.timerUnit;
+
+    applyUTMToCheckout();
+
+    (function() {
+      for (let i = 0; i < 3; i++) history.pushState({page: i}, '', window.location.href);
+      window.addEventListener('popstate', function() { history.pushState({page:'back'},'',window.location.href); });
+    })();
+
+    function createConfetti() {
+      const container = document.getElementById('confettiContainer');
+      const colors = ['#4285F4','#EA4335','#FBBC05','#34A853','#FFD700','#ff6b6b'];
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const el = document.createElement('div'); el.className = 'confetti';
+          el.style.left = Math.random() * 100 + '%';
+          el.style.background = colors[Math.floor(Math.random() * colors.length)];
+          el.style.animationDuration = (3 + Math.random() * 2) + 's';
+          el.style.animationDelay = Math.random() * .5 + 's';
+          if (Math.random() > .5) el.style.borderRadius = '50%';
+          container.appendChild(el); setTimeout(() => el.remove(), 5000);
+        }, i * 50);
+      }
+    }
+
+    let hasSpun = false;
+    function spinWheel() {
+      if (hasSpun) return; hasSpun = true;
+      const wheel = document.getElementById('wheel');
+      const spinBtn = document.getElementById('spinBtn');
+      const wheelCenter = document.getElementById('wheelCenter');
+      spinBtn.disabled = true; wheelCenter.classList.add('disabled'); wheelCenter.textContent = t.wheelCenterLoading;
+      try { const audio = new Audio('https://mishihight.online/reward/sound/roleta.mp3'); audio.play().catch(()=>{}); } catch(e) {}
+      wheel.style.transform = `rotate(${5 * 360 + 247.5}deg)`;
+      setTimeout(() => showResult(), 5500);
+    }
+
+    function showResult() {
+      document.getElementById('wheelSection').style.display = 'none';
+      document.getElementById('resultSection').style.display = 'block';
+      // O widget Vendepay já foi carregado pelo script acima.
+      // Reexibe o iframe após a seção de resultado ficar visível.
+      if (window.VendepayUpsellWidget) {
+        window.VendepayUpsellWidget.showIframe('vendepay-upsell-container');
+      }
+      createConfetti(); setTimeout(createConfetti, 1000); setTimeout(createConfetti, 2000);
+      startTimer(); applyUTMToCheckout();
+
+      // Hide debit warning when any UTM/param is present
+      var params = new URLSearchParams(window.location.search);
+      // warningDebit removed (Vendepay widget)
+    }
+
+    let timeLeft = 300;
+    function startTimer() {
+      const display = document.getElementById('timerDisplay');
+      const interval = setInterval(() => {
+        timeLeft--;
+        const m = Math.floor(timeLeft / 60); const s = timeLeft % 60;
+        display.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        if (timeLeft <= 0) { clearInterval(interval); display.textContent = '00:00'; }
+      }, 1000);
+    }
+
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    setTimeout(() => createConfetti(), 500);
+  </script>
+
+</body></html>

